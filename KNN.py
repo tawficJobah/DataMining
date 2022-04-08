@@ -18,11 +18,11 @@ def distance(row1, row2):
 		distance += math.pow(row1[i] - row2[i],2)
 	return math.sqrt(distance)
 
-def get_neighbors(train, test_row, k):
+def get_neighbors(known, unkown, k):
 	distances = list()
-	for train_row in train:
-		dist = distance(test_row, train_row)
-		distances.append((train_row, dist))
+	for known_row in known:
+		dist = distance(unkown, known_row)
+		distances.append((known_row, dist))
 	distances.sort(key=lambda tup: tup[1])
 	neighbors = list()
 	for i in range(k):
