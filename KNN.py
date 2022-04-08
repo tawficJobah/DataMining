@@ -11,6 +11,11 @@ def most_frequent(List):
             counter = curr_frequency
             num = i
     return num
+def manhattanDistance(row1,row2):
+    distance = 0.0
+    for i in range(len(row1)-1):
+        distance += abs(row1[i] - row2[i])
+    return distance
 
 def distance(row1, row2):
 	distance = 0.0
@@ -46,16 +51,21 @@ with open(filename, 'r') as csvfile:
     print("Total no. of rows: %d"%(csvreader.line_num))
 
 for unknown in unknownWhole:
-
-    neighbors = get_neighbors(known,unknown,5)
+    neighbors = get_neighbors(known,unknown,7)
     flowerType = []
     for neighbor in neighbors:
         flowerType.append(neighbor[4])
-
     print("Flower class: ", most_frequent(flowerType))
 
+newUnknown = []
+newKnown = []
+for i in range(len(known)):
+    if(i < 20):
+        newUnknown.append(known[i])
+    else:
+        newKnown.append(known[i])
+
+print(newUnknown)
 
 
-
- 
 
